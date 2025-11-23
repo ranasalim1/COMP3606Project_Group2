@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editPhoneNumber"
+            android:hint="Phone number (e.g., emulator number)"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DDDDDD"
+            android:textColor="#000000"
+            android:padding="12dp"/>
+
+
+        <TextView
+            android:id="@+id/textCurrentQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textTimer"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnSendQuestion"
+            android:text="Send Question via SMS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFD700"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnNextQuestion"
+            android:text="Next Question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFD700"
+            android:textColor="#000000"
+            android:layout_marginTop="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textIncomingMessages"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="10dp"
+            android:text="Incoming messages will appear here..."
+            android:textColor="#FFFFFF"
+            android:background="#333333"
+            android:scrollbars="vertical" />
+
+        <Button
+            android:id="@+id/btnBackToMain"
+            android:text="Back to Main Menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFD700"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp"/>
+
+        <Button
+            android:id="@+id/btnExitQuiz"
+            android:text="Exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFD700"
+            android:textColor="#000000"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+</ScrollView>
