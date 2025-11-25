@@ -426,8 +426,8 @@ public class QuizActivity extends AppCompatActivity {
 
         SpellingQuestion q = currentQuestion;
 
-        String sms = "Spelling Bee Practice\n" +
-                "Word: " + q.getWord() + "\n\n" +
+        String sms = "Choose the correct spelling of the word that matches the definition below:" + "\n" +
+                "Definition: " + q.getHint() + "\n\n" +
                 "A) " + q.getOptionA() + "\n" +
                 "B) " + q.getOptionB() + "\n" +
                 "C) " + q.getOptionC() + "\n" +
@@ -544,4 +544,5 @@ public class QuizActivity extends AppCompatActivity {
         super.onDestroy();
         if (countDownTimer != null) countDownTimer.cancel();
     }
+    //hi
 }
