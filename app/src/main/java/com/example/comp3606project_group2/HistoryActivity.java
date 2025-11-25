@@ -19,6 +19,8 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         textHistory = findViewById(R.id.textHistory);
+        findViewById(R.id.btnBackToMain).setOnClickListener(v -> goBackToMain());
+        findViewById(R.id.btnExitHistory).setOnClickListener(v -> finishAffinity());
 
         List<QuizResult> results = QuizStorage.loadResults(this);
 
@@ -34,8 +36,6 @@ public class HistoryActivity extends AppCompatActivity {
 
         textHistory.setText(sb.toString());
 
-        findViewById(R.id.btnBackToMain).setOnClickListener(v -> goBackToMain());
-        findViewById(R.id.btnExitHistory).setOnClickListener(v -> finishAffinity());
     }
 
     private void goBackToMain() {
