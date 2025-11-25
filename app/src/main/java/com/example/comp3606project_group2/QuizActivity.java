@@ -426,15 +426,27 @@ public class QuizActivity extends AppCompatActivity {
 
         SpellingQuestion q = currentQuestion;
 
-        String sms = "Choose the correct spelling of the word that matches the definition below:" + "\n" +
-                "Definition: " + q.getHint() + "\n\n" +
-                "A) " + q.getOptionA() + "\n" +
-                "B) " + q.getOptionB() + "\n" +
-                "C) " + q.getOptionC() + "\n" +
-                "D) " + q.getOptionD() + "\n\n" +
-                "Reply with A, B, C or D.";
+        // Messages are split into segments and sent separately because
+        //   the full question sometimes exceeded the 160-character SMS limit
+        //   and messages failed to send.
 
-        SmsManager.getDefault().sendTextMessage(phone, null, sms, null, null);
+
+        String instruction = "Choose the correct spelling of the word that matches the definition below:";
+
+        SmsManager.getDefault().sendTextMessage(phone, null, instruction, null, null);
+
+        String definition = "Definition: " + q.getHint();
+
+        SmsManager.getDefault().sendTextMessage(phone, null, definition, null, null);
+
+
+        String options = "A) " + q.getOptionA() + "\n" +
+                         "B) " + q.getOptionB() + "\n" +
+                         "C) " + q.getOptionC() + "\n" +
+                         "D) " + q.getOptionD() + "\n\n" +
+                         "Reply with A, B, C or D.";
+
+        SmsManager.getDefault().sendTextMessage(phone, null, options, null, null);
 
         Toast.makeText(this, "Question sent", Toast.LENGTH_SHORT).show();
 
