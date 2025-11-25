@@ -426,27 +426,24 @@ public class QuizActivity extends AppCompatActivity {
 
         SpellingQuestion q = currentQuestion;
 
-        // Messages are split into segments and sent separately because
-        //   the full question sometimes exceeded the 160-character SMS limit
-        //   and messages failed to send.
+        //We initially attempted to send the entire question in a single SMS, however the message sometimes
+        // exceeded the standard 160-character SMS limit and failed to send
+        //After researching the issue, we switched to using SmsManager.divideMessage() and SmsManager.sendMultipartTextMessage()
+        //divideMessage() automatically splits long text into valid SMS-sized segments (each ≤160 characters)
+        //sendMultipartTextMessage() then sends those segments as a single logical multipart SMS
 
+        String sms = "Choose the correct spelling of the word that matches the definition below:\n" +
+                "Definition: "+ q.getHint() + "\n\n" +
+                "A) " + q.getOptionA() + "\n" +
+                "B) " + q.getOptionB() + "\n" +
+                "C) " + q.getOptionC() + "\n" +
+                "D) " + q.getOptionD() + "\n\n" +
+                "Reply with A, B, C or D.";
 
-        String instruction = "Choose the correct spelling of the word that matches the definition below:";
+        SmsManager smsManager = SmsManager.getDefault();
+        ArrayList<String> parts = smsManager.divideMessage(sms);
 
-        SmsManager.getDefault().sendTextMessage(phone, null, instruction, null, null);
-
-        String definition = "Definition: " + q.getHint();
-
-        SmsManager.getDefault().sendTextMessage(phone, null, definition, null, null);
-
-
-        String options = "A) " + q.getOptionA() + "\n" +
-                         "B) " + q.getOptionB() + "\n" +
-                         "C) " + q.getOptionC() + "\n" +
-                         "D) " + q.getOptionD() + "\n\n" +
-                         "Reply with A, B, C or D.";
-
-        SmsManager.getDefault().sendTextMessage(phone, null, options, null, null);
+        smsManager.sendMultipartTextMessage(phone, null, parts, null, null);
 
         Toast.makeText(this, "Question sent", Toast.LENGTH_SHORT).show();
 
