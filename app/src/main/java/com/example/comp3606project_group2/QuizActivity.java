@@ -556,5 +556,4 @@ public class QuizActivity extends AppCompatActivity {
         super.onDestroy();
         if (countDownTimer != null) countDownTimer.cancel();
     }
-    //hi
 }
